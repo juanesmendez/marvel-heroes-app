@@ -12,29 +12,35 @@ class HeroesList extends Component {
 
     componentDidMount() {
         if (!navigator.onLine) {
-            if (localStorage.getItem('heroes') === null){
+            if (localStorage.getItem('heroes') === null) {
+                console.log("OFFLINE")
                 this.setState({ heroes: "loading..." });
-            }else{
-                console.log("Data from local storage:" + JSON.parse(localStorage.getItem('heroes')));
+            } else {
+                //console.log("Data from local storage:" + JSON.parse(localStorage.getItem('heroes')));
                 //let heroes = [];
                 //heroes = localStorage.getItem('heroes');
-                this.setState({ heroes:  JSON.parse(localStorage.getItem("heroes"))});
+                this.setState({ heroes: JSON.parse(localStorage.getItem("heroes")) });
             }
         } else {
             var md5 = require('md5');
             let ts = new Date();
-            console.log(`TS: ${ts}`);
+            //console.log(`TS: ${ts}`);
             let hash = md5(ts + privateKey + publicKey);
-            console.log(`HASH: ${hash}`);
+            //console.log(`HASH: ${hash}`);
 
             fetch(`https://gateway.marvel.com:443/v1/public/characters?apikey=${publicKey}&ts=${ts}&hash=${hash}&limit=100`)
                 .then(res => res.json())
                 .then(value => {
-                    console.log(value);
-                    console.log(value.data.results);
+                    //console.log(value);
+                    //console.log(value.data.results);
                     this.setState({ heroes: value.data.results });
 
                     localStorage.setItem('heroes', JSON.stringify(value.data.results));
+                })
+                .catch(error => {
+                    console.log("Imprimiendo error:");
+                    console.log(error);
+                    this.setState({ heroes: null });
                 });
         }
 
@@ -42,7 +48,10 @@ class HeroesList extends Component {
 
     render() {
         if (this.state.heroes === "loading..." || this.state.heroes === null) {
-            return (<div className="container-float"><h1>Loading heroes...</h1></div>);
+            return (
+                <div className="row justify-content-center">
+                    <div className="container-float"><h1>Loading heroes...</h1></div>
+                </div>);
         } else {
             return (
                 <div className="container-float">
