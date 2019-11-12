@@ -11,45 +11,65 @@ class HeroesList extends Component {
     }
 
     componentDidMount() {
-        var md5 = require('md5');
-        let ts = new Date();
-        console.log(`TS: ${ts}`);
-        let hash = md5(ts + privateKey + publicKey);
-        console.log(`HASH: ${hash}`);
+        if (!navigator.onLine) {
+            if (localStorage.getItem('heroes') === null){
+                this.setState({ heroes: "loading..." });
+            }else{
+                console.log("Data from local storage:" + JSON.parse(localStorage.getItem('heroes')));
+                //let heroes = [];
+                //heroes = localStorage.getItem('heroes');
+                this.setState({ heroes:  JSON.parse(localStorage.getItem("heroes"))});
+            }
+        } else {
+            var md5 = require('md5');
+            let ts = new Date();
+            console.log(`TS: ${ts}`);
+            let hash = md5(ts + privateKey + publicKey);
+            console.log(`HASH: ${hash}`);
 
-        fetch(`https://gateway.marvel.com:443/v1/public/characters?apikey=${publicKey}&ts=${ts}&hash=${hash}&limit=100`)
-            .then(res => res.json())
-            .then(value => {
-                console.log(value);
-                console.log(value.data.results);
-                this.setState({ heroes: value.data.results });
+            fetch(`https://gateway.marvel.com:443/v1/public/characters?apikey=${publicKey}&ts=${ts}&hash=${hash}&limit=100`)
+                .then(res => res.json())
+                .then(value => {
+                    console.log(value);
+                    console.log(value.data.results);
+                    this.setState({ heroes: value.data.results });
 
-            });
+                    localStorage.setItem('heroes', JSON.stringify(value.data.results));
+                });
+        }
 
     }
 
     render() {
-        return (
-            <div className="container-float">
-                <div className="card m-3">
-                    <div className="card-header">
-                        <h1 className="text-center">Marvel Heroes</h1>
-                    </div>
-                    <div className="card-body">
-                        <div className="row">
+        if (this.state.heroes === "loading..." || this.state.heroes === null) {
+            return (<div className="container-float"><h1>Loading heroes...</h1></div>);
+        } else {
+            return (
+                <div className="container-float">
+                    <div className="card">
+                        <div className="card-header">
+                            <h1 className="text-center">Marvel Heroes</h1>
+                        </div>
+                        <div className="card-body">
+                            <div className="row justify-content-center">
+                                <div className="col-9">
+                                    <div className="card-columns">
 
-                            {this.state.heroes.map((value, idx) => {
-                                return <Heroe key={idx} heroe={value} />
-                            })}
+                                        {this.state.heroes.map((value, idx) => {
+                                            return <Heroe key={idx} heroe={value} />
+                                        })}
+
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
                 </div>
+            );
+        }
 
 
-
-            </div>
-        );
     }
 }
 

@@ -14,28 +14,25 @@ export default class Heroe extends Component {
     }
 
     loadThumbnail(path, extension) {
-        console.log("INSIDE THUMBNAIL METHOD");
-        /*
-        var md5 = require('md5');
-        let ts = new Date();
-        let hash = md5(ts+privateKey+publicKey);*/
-        path += '/portrait_xlarge' + '.' + extension;
-        //path += `?apikey=${publicKey}&ts=${ts}&hash=${hash}`;
-        console.log(path);
+        //console.log("INSIDE THUMBNAIL METHOD");
+        path += '/portrait_incredible' + '.' + extension;
+        //console.log(path);
         return path;
     }
 
     render() {
         return (
-            <div className="col-3">
-                <div className="card m-3">
-                    <img src={this.loadThumbnail(this.state.heroe.thumbnail.path, this.state.heroe.thumbnail.extension)} className="card-img-top" alt="..."></img>
-                    <div className="card-body">
-        <h2 className="text-center">{this.state.heroe.name}</h2>
-                        <p className="card-text">{this.state.heroe.description}</p>
-                    </div>
+
+            <div className="card w-1">
+                <div className="card-header">
+                    <h2 className="text-center">{this.state.heroe.name}</h2>
+                </div>
+                <img src={this.loadThumbnail(this.state.heroe.thumbnail.path, this.state.heroe.thumbnail.extension)} className="card-img-top" alt={this.state.heroe.name}></img>
+                <div className="card-body">
+                    <p className="card-text">{this.state.heroe.description}</p>
                 </div>
             </div>
+
 
         );
     }
