@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 
 export default class Heroe extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
 
+        };
+    }
+    /*
     state = {
         heroe: this.props.heroe
-    }
+    }*/
 
     componentDidMount() {
-        console.log(this.state.heroe);
+        //this.setState({heroe: this.props.heroe});
+        console.log(this.props.heroe);
     }
 
     loadThumbnail(path, extension) {
@@ -22,11 +30,11 @@ export default class Heroe extends Component {
 
             <div className="card w-1">
                 <div className="card-header">
-                    <h2 className="text-center">{this.state.heroe.name}</h2>
+                    <h2 className="text-center">{this.props.heroe.name}</h2>
                 </div>
-                <img src={this.loadThumbnail(this.state.heroe.thumbnail.path, this.state.heroe.thumbnail.extension)} className="card-img-top" alt={this.state.heroe.name}></img>
+                <img src={this.loadThumbnail(this.props.heroe.thumbnail.path, this.props.heroe.thumbnail.extension)} className="card-img-top" alt={this.props.heroe.name}></img>
                 <div className="card-body">
-                    <p className="card-text">{this.state.heroe.description}</p>
+                    <p className="card-text">{this.props.heroe.description}</p>
                 </div>
             </div>
 
