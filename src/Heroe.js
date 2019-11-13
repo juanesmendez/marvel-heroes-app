@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-const privateKey = '1d1e75f60a6846fbca805ed3bbcbcac0348dfc11';
-const publicKey = '57755cfd79810e602c922413ed91de50';
-
 export default class Heroe extends Component {
 
     state = {
@@ -15,7 +12,7 @@ export default class Heroe extends Component {
 
     loadThumbnail(path, extension) {
         //console.log("INSIDE THUMBNAIL METHOD");
-        path += '/portrait_incredible' + '.' + extension;
+        path += '/portrait_incredible.' + extension;
         //console.log(path);
         return path;
     }

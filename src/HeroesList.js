@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Heroe from './Heroe';
 
-const privateKey = '1d1e75f60a6846fbca805ed3bbcbcac0348dfc11';
-const publicKey = '57755cfd79810e602c922413ed91de50';
+const privateKey = 'e2bbd003008c73aeaa0ebca9a0191fea7b187c1b';
+const publicKey = 'ca744ad579e3a6b879214d6075fc079f';
 
 class HeroesList extends Component {
 
