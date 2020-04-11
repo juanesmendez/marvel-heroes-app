@@ -1,8 +1,8 @@
-# Marvel Heroes App 🦸🏻‍♂️
+# Marvel Super Heroes App 🦸🏻‍♂️
 
 ## Description
 
-This is a web app developed with React, which shows a list of all the heroes from the Marvel Universe. All of the data used in the app is fetched using the Marvel's API (https://developer.marvel.com/docs).
+This is a web app developed with React, which shows a list of all the super heroes from the Marvel Universe. All of the data used in the app is fetched using the Marvel's API (https://developer.marvel.com/docs).
 
 The API GET requests are sent to the following endpoint:
 - `https://gateway.marvel.com:443/v1/public/characters`
