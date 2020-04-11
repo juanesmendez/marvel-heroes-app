@@ -1,3 +1,22 @@
+# Marvel Heroes App 🦸🏻‍♂️
+
+## Description
+
+This is a web app developed with React, which shows a list of all the heroes from the Marvel Universe. All of the data used in the app is fetched using the Marvel's API (https://developer.marvel.com/docs).
+
+### Screenshots of the app running
+
+![](wiki_images/image-1.png)
+![](wiki_images/image-2.png)
+
+## How to run the project?
+
+To run the project, follow the steps described below:
+1. Install `npm`.
+2. Locate the root directory of the project and run `npm install`.
+3. Located on the root directory of the project run `npm start`.
+4. Open your preferred browser and browse to `localhost:3000`.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
