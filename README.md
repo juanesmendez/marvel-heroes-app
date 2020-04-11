@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a progreesive web app (PWA) developed with React, which shows a list of all the super heroes from the Marvel Universe. All of the data used in the app is fetched using the Marvel's API (https://developer.marvel.com/docs).
+This is a progreesive web app (PWA) developed with React, which shows a list of all the super heroes from the Marvel Universe. All of the data used in the app is fetched using the Marvel's API (https://developer.marvel.com/docs). Because it is a PWA, it supports offline mode. The list of super heroes will still be shown, even if the browser looses internet connection.
 
 The API GET requests are sent to the following endpoint:
 - `https://gateway.marvel.com:443/v1/public/characters`
