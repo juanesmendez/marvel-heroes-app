@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a web app developed with React, which shows a list of all the super heroes from the Marvel Universe. All of the data used in the app is fetched using the Marvel's API (https://developer.marvel.com/docs).
+This is a progreesive web app (PWA) developed with React, which shows a list of all the super heroes from the Marvel Universe. All of the data used in the app is fetched using the Marvel's API (https://developer.marvel.com/docs).
 
 The API GET requests are sent to the following endpoint:
 - `https://gateway.marvel.com:443/v1/public/characters`
@@ -29,8 +29,10 @@ Frameworks used:
 
 To run the project, follow the steps described below:
 1. Install `npm`.
+2. Install `http-server` using `npm`, by running `npm install http-server`. (App server for running the app in production environment, for supporting offline mode)
 2. Locate the root directory of the project and run `npm install`.
-3. Located on the root directory of the project run `npm start`.
+3. Run `npm build` for building the production environment.
+4. Go to the `/build` directory created after running the command in the previous step. Run `http-server .`.
 4. Open your preferred browser and browse to `localhost:3000`.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
